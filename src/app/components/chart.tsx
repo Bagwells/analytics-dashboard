@@ -87,7 +87,7 @@ const ChartStyle:React.FC =()=> {
                     active: {
                         allowMultipleDatapointsSelection: false,
                         filter: {
-                            type: 'darken',
+                            type: 'lighten',
                             value: 1,
                         },
                     },
@@ -99,14 +99,17 @@ const ChartStyle:React.FC =()=> {
                 },
             },
             fill: {
+                
                 type: 'gradient',
                 gradient:{
                     shade: 'dark',
                     type:"vertical",
                     shadeIntensity: 0.1,
-                    color:'#34CAA5',
-                    opacityFrom: 1,
-                    opacityTo:0.5,
+                    gradientToColors:['rgba(52, 202, 165, 1)','rgba(52,202,165,0.1)'],
+                    opacityFrom:1,
+                    opacityTo:0.1,
+                    stops:[0,50,100],
+                    colorStops: [],
                 },
                 
             },
@@ -127,7 +130,7 @@ const ChartStyle:React.FC =()=> {
                 },
                 y: {
                     formatter: function (val: any) {
-                        return val;
+                        return "$" + val;
                     },
                 },
             },
