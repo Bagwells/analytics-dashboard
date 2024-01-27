@@ -27,7 +27,7 @@ export const ThemeSwitcher = () => {
             <div className="flex flex-col w-[46px] h-24 p-2 bg-white dark:bg-slate-800 rounded-[100px] justify-between self-center">
                 <button onClick={()=> setMounted(false)}
                     className="flex w-[30px]">
-                    <img src="/light-mode.svg" className="" alt=""/>
+                    <img src="/Light-mode.svg" className="" alt=""/>
                 </button>
                 <button onClick={()=> setMounted(true)}
                     className="flex w-[30px]">
