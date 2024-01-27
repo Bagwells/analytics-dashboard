@@ -11,8 +11,8 @@ const SideBar:React.FC<menu> = ({close, slide}) => {
 
 
     return(
-        <div className={`fixed w-14 sm:w-20 h-full flex flex-col py-5 bg-[#F7F8FA] dark:bg-grey800 items-center ${slide} lg:-translate-x-0 
-            transition-all duration-500 justify between gap-2 border-r border-[#EBECF2] dark:border-grey700 z-50`}
+        <div className={`fixed w-20 h-[100vh] flex flex-col py-5 bg-[#F7F8FA] dark:bg-grey800 items-center ${slide} lg:-translate-x-0 
+            transition-all duration-500 justify-between gap-5 border-r border-[#EBECF2] dark:border-grey700 z-50`}
         >
             <div className="flex w-full items-center flex-col gap-5">
                 <img onClick={close} 

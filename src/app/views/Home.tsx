@@ -16,20 +16,26 @@ const HomePage =() => {
         setSlideMenu(prevState => !prevState)
     };
 
+    const slideToggleOff =()=> {
+
+        setSlideMenu(false);
+    }
+
 
     return(
         <>
-        <div className="w-full bg-grey50 dark:bg-grey900">
+        <div className="w-full 2xl:px-80 bg-grey50 dark:bg-grey900">
             <div className="flex w-full h-full bg-grey50 dark:bg-grey900 ">
                     <SideBar 
                         close={slideToggle} 
                         slide={switchSlide}
                     />
-                <div className="flex flex-col w-full h-full">
-                    <div className="flex relative w-full">
+                <div className="flex flex-col w-full h-full ">
+                    <div className=" flex w-full">
                         <NavBar open={slideToggle}/>
                     </div>
-                    <div className="flex w-full h-full mt-17.5 lg:pl-20">
+                    <div onClick={slideToggleOff} 
+                        className="flex w-full h-full mt-17.5 lg:pl-20">
                         <div className="flex flex-col w-full bg-[#FAFAFA] dark:bg-grey800 px-2.5 sm:px-5 py-5 gap-5">
                             <div className="flex lg:hidden items-center self-end gap-2.5 px-4 py-3">
                                 <LuCalendarDays className="text-black dark:text-white text-xl" />

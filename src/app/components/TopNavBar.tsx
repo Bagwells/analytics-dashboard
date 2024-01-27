@@ -1,4 +1,5 @@
 
+import { useState } from "react"
 import { IoIosArrowDown } from "react-icons/io"
 import { LuCalendarDays } from "react-icons/lu"
 import { PiBell } from "react-icons/pi"
@@ -6,6 +7,14 @@ import { RiSearchLine } from "react-icons/ri"
 
 
 const NavBar =({open}:{open:(args?:any)=>void})=> {
+    const [openMenu,setOpenMenu] = useState(false);
+
+    const openMenuSwitch =()=> {
+        setOpenMenu(prevState => !prevState);
+    }
+
+    const styleChange = openMenu ? "visible":"invisible";
+    const styleRotate = openMenu ? "rotate-180" : "";
 
     const profile = {
         Name: 'Justin Bergson',
@@ -14,7 +23,7 @@ const NavBar =({open}:{open:(args?:any)=>void})=> {
 
     return (
         <>
-            <nav className="fixed flex inset-0 w-full h-17.5 bg-grey50 dark:bg-grey800 items-center py-4.5 px-2 border-b border-[#EBECF2] dark:border-grey600 z-30">
+            <nav className="fixed flex inset-0 w-full h-17.5 bg-grey50 dark:bg-grey800 items-center py-4.5 px-2 2xl:px-[340px]  border-b border-[#EBECF2] dark:border-grey600 z-30">
                 <div className="lg:w-20"/>
                 <div className="flex w-full h-full items-center justify-between z-50 gap-4">
                     <div className="flex items-center">
@@ -41,7 +50,8 @@ const NavBar =({open}:{open:(args?:any)=>void})=> {
                         <div className="hidden md:flex items-center justify-center w-10 h-10 border-[0.769px] border-borderCol rounded-full">
                             <PiBell className="text-xl text-[#0D062D] dark:text-grey300"/>
                         </div>
-                        <div className="flex relative w-fit h-12 py-1.5 px-2 dark:bg border-borderCol border rounded-[28px] items-center justify-around gap-3">
+                        <div onClick={openMenuSwitch}
+                            className="flex w-fit h-12 py-1.5 px-2 dark:bg border-borderCol border rounded-[28px] items-center justify-around gap-3">
                             <div className="flex w-9 rounded-full">
                                 <img src="/Profile.svg" alt="" className="w-full h-full" />
                             </div>
@@ -50,10 +60,22 @@ const NavBar =({open}:{open:(args?:any)=>void})=> {
                                 <div className="font-Inter font-normal text-right text-sm text-[#787486] dark:text-grey300">{profile?.email}</div>
                             </div>
                             <div className="">
-                                <IoIosArrowDown className="text-lg text-[#0D062D] dark:text-grey400"/> 
-                            </div>
-                            <div className="absolute"></div>
+                                <IoIosArrowDown className={`text-lg text-[#0D062D] dark:text-grey400 ${styleRotate}  transition-all duration-300`}/> 
+                            </div>   
                         </div>
+                            <div className={`absolute flex right-5 top-16 w-[211px] h-fit ${styleChange} opacity-100 bg-grey50 dark:bg-grey900 border-borderCol dark:border-grey400 shadow-neutral-600 p-3 rounded-md`}>
+                                <div className="flex flex-col w-full gap-5 ">
+                                    <div className="font-Inter font-normal text-base text-textCol dark:text-grey100">
+                                        Profile
+                                    </div>
+                                    <div className="font-Inter font-normal text-base text-textCol dark:text-grey100">
+                                        Account
+                                    </div>
+                                    <div className=" lg:hidden font-Inter font-normal text-base text-textCol dark:text-grey100">
+                                        Notifications
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </nav>

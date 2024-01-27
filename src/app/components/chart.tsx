@@ -18,26 +18,15 @@ const ChartStyle:React.FC =()=> {
 
     const [chartData, setChartData] = useState({
         series: [
-          { name: 'months', data: [8.000, 18.000, 4.000, 28.000, 8.000, 45.000, 8.000, 20.000, 34.000, 4.000, 30.000, 24.000] },
+          { name: '', data: [8.000, 18.000, 4.000, 28.000, 8.000, 45.000, 8.000, 20.000, 34.000, 4.000, 30.000, 24.000] },
         ],
         options: {
             chart: {
                 type: 'bar',
                 height: 350,
                 fontFamily: 'Plus_Jakarta_Sans',
-                // selection: {
-                //     enabled: true,
-                //     type: 'vertical',
-                //     fill: {
-                //         type:'gradient',
-                //         gradient:{
-                //             color: '#34CAA5',
-                //             type:'vertical',
-                //             shadeIntensity: 0.5,
-                //             opacityFrom:0.1,
-                //             opacityTo: 1, 
-                //         },
-                //     },
+                fontWeight: 600,
+                fontSize: "12px"
             },
             plotOptions: {
                 bar: {
@@ -46,12 +35,6 @@ const ChartStyle:React.FC =()=> {
                     endingShape: 'rounded',
                     borderRadius: 15,
                     borderRadiusApplication: 'end',
-
-                },
-                states: {
-                    hover: {
-                        color: '#34CAA5',
-                    },
                 },
             },
             dataLabels: {
@@ -64,6 +47,10 @@ const ChartStyle:React.FC =()=> {
             },
             xaxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                style:{
+                    colors:"#525252",
+                    fontFamily: "Plus_Jakarta_sans"
+                }
             },
             yaxis: {
                 title: {
@@ -78,13 +65,33 @@ const ChartStyle:React.FC =()=> {
                     minWidth: 0,
                     MaxWidth: 50.000,
                 },
-                crosshairs: {
-                    show:true,
-                    position:'back',
-                    stroke:{
-                        dashArray: 1,
+                style: {
+                    fontFamily: "Plus Jakarta Sans",
+                    colors: "#525252",
+                    fontSize:"12px",        
+                    fontWeight:600,    
+                },
+                states: {
+                    normal: {
+                        filter:{
+                            type: 'none',
+                            value: 0.1,
+                        },
                     },
-                }
+                    hover: {
+                        filter:{
+                            type: 'lighten',
+                            value: 1,
+                        }, 
+                    },
+                    active: {
+                        allowMultipleDatapointsSelection: false,
+                        filter: {
+                            type: 'darken',
+                            value: 1,
+                        },
+                    },
+                },
             },
             labels: {
                 formatter: function (value: any) {
@@ -92,20 +99,35 @@ const ChartStyle:React.FC =()=> {
                 },
             },
             fill: {
-                opacity: 0.1,
-                color: '#34CAA5'
+                type: 'gradient',
+                gradient:{
+                    shade: 'dark',
+                    type:"vertical",
+                    shadeIntensity: 0.1,
+                    color:'#34CAA5',
+                    opacityFrom: 1,
+                    opacityTo:0.5,
+                },
+                
             },
             
             tooltip: {
                 enabled: true,
+                x:{
+                    show:false
+                },
+                fill:{
+                    color:'#',
+                },
+                theme: 'dark',
                 markers: {
-                    show: true,
-                    fillOpacity: 1,
+                    show: false,
+                    fillOpacity: 0.1,
                     colors: '#34CAA5',
                 },
                 y: {
                     formatter: function (val: any) {
-                        return '$' + val;
+                        return val;
                     },
                 },
             },
